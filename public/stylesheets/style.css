@@ -1,8 +1,254 @@
+@import url(https://fonts.googleapis.com/css?family=Molle:400italic&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Atma);
+@import url(https://fonts.googleapis.com/css?family=Assistant);
+
 body {
-  padding: 50px;
+  margin: 0px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.nav a {
+  font-family: 'Molle', cursive;
+  font-size: 1.5em;
+}
+
+.nav a:hover {
+  cursor: pointer;
+}
+
+.content {
+  margin: 50px;
+}
+
+.content h1 {
+  text-align: center;
+  font-family: 'Molle', cursive;
+  font-size: 2em;
+  color: hsla(255, 255%, 255%, .1);
+}
+
+/*
+  WISHLIST CARD
+*/
+
+.wishlist__card {
+  padding-top: 30px;
+  background-color: white;
+  min-height: 400px;
+  width: 350px;
+  margin: auto;
+  box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+  border-radius:2px;
+}
+
+.wishlist .santa-logo img{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  position: relative;
+  top: 10px;
+}
+
+.wishlist__card h2 {
+  font-family: "Pacifico", cursive;
+  color: #da5347;
+  margin-bottom: 0px;
+}
+
+.wishlist__card .header p {
+  font-family: 'Assistant', sans-serif;
+  font-size: 1.2em;
+}
+
+.wishlist__card ul {
+  list-style-type: none;
+  font-family: "Atma", cursive;
+  padding: 0;
+  margin: 0;
+  margin-top: 30px;
+  position: relative;
+}
+
+.wishlist__card li {
+  position: relative;  
+  padding: 0 25px;
+  padding-top: 5px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.4em;
+  border-top: 1px solid #eaeaea;
+  color: #717171;
+}
+
+.wishlist__card li:nth-child(1) {
+  border-top:0;
+}
+
+.wishlist__card li:hover {
+  color: #424242;
+  cursor: pointer;
+}
+
+.wishlist__card ::placeholder {
+  color: #da5347;
+}
+
+.wishlist__card .add-item {
+  margin-top: 40px;
+}
+
+.wishlist__card .add-item input {
+  height: 40px;
+}
+
+.wishlist__card .add-item input:focus,
+.wishlist__card .add-item input:active,
+.wishlist__card .add-item input:active:focus {
+  border: 0.5px solid #f0867c !important;
+}
+
+/*
+  SNOWFLAKES
+*/
+
+.everything {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 120vh;
+  width: 100vw;
+  background: #235E6F;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.container {
+  width: 100vw;
+}
+
+.snowflake {
+  height: 20px;
+  width: 20px;
+}
+
+.circle, .circle14, .circle13, .circle12, .circle11, .circle10, .circle9, .circle8, .circle7, .circle6, .circle5, .circle4, .circle3, .circle2, .circle1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation-name: rainDown;
+  animation-duration: 2.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  display: inline-block;
+  margin: 30px;
+}
+
+.ground {
+  background-color: #E0F0EF;
+  height: 50px;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.circle2 {
+  animation-delay: 0.5s;
+}
+
+.circle3 {
+  animation-delay: 0.2s;
+}
+
+.circle4 {
+  animation-delay: 1.2s;
+}
+
+.circle5 {
+  animation-delay: 0.2s;
+}
+
+.circle6 {
+  animation-delay: 0.5s;
+  position: absolute;
+  top: 0;
+}
+
+.circle7 {
+  animation-delay: 0.7s;
+  position: absolute;
+  top: 0;
+  left: 590px;
+}
+
+.circle8 {
+  animation-delay: 0.8s;
+  position: absolute;
+  top: 0;
+  left: 250px;
+}
+
+.circle9 {
+  animation-delay: 1.2s;
+  position: absolute;
+  top: 0;
+  left: 100px;
+}
+
+.circle10 {
+  animation-delay: 1.7s;
+  position: absolute;
+  top: 0;
+  left: 450px;
+}
+
+.circle11 {
+  animation-delay: 1.6s;
+  position: absolute;
+  top: 0;
+  left: 150px;
+}
+
+.circle12 {
+  animation-delay: 1.2s;
+  position: absolute;
+  top: 0;
+  left: 600px;
+}
+
+.circle13 {
+  animation-delay: 0.7s;
+  position: absolute;
+  top: 0;
+  left: 800px;
+}
+
+.circle14 {
+  animation-delay: 1.4s;
+  position: absolute;
+  top: 0;
+  left: 750px;
+}
+
+@keyframes rainDown {
+  0% {
+    transform: translate(0, -70px);
+  }
+  85% {
+    opacity: 0.3;
+    transform: translate(80px, 80vh);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(80px, 85vh);
+  }
 }
