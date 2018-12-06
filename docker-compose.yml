@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+
+  server:
+    image: node:8.9.0
+    command: bash -c "cd /workdir && npm run start"
+    ports:
+      - 3000:3000
+      - 7777:7777
+    volumes:
+      - ./:/workdir
+    networks:
+      - back-tier
+
+  database-ui:
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=database
+      - ME_CONFIG_OPTIONS_EDITORTHEME="ambiance"
+      - ME_CONFIG_BASICAUTH_USERNAME=""
+      - ME_CONFIG_MONGODB_URL=mongodb://database:27017/dearsanta
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=pass
+    ports:
+      - 8081:8081
+    depends_on:
+      - database
+    networks:
+      - back-tier
+
+  database:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - back-tier
+
+networks:
+  back-tier:
