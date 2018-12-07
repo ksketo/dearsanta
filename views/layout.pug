@@ -15,43 +15,17 @@ html
         a.active(href="/wishlist") My Wishlist
         a.active(href="/shopping-list") Shopping List
         a.active(href="/gift-guides") Gift Guide
+        a.button.login-btn(href="#") Join
 
     .content
       h1= description
       block content
 
-    .everything
-      .container
-          .circle1
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle2
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle3
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle4
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle5
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle6
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle1
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle7
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle2
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle8
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle9
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle10
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle11
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle12
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle13
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
-          .circle14
-            img.snowflake(src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png")
+    include mixins/_loginForm
+    include mixins/_snowFlakes
 
+    +snowFlakes()
+    +loginForm()
+
+    block scripts
+      script(src="/dist/App.bundle.js")
