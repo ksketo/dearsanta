@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController');
 
 router.get('/', function(req, res, next) {
   res.redirect("/wishlist");
@@ -26,5 +27,21 @@ router.get('/gift-guides', function(req, res, next) {
   });
 });
 
+/**
+ * Auth Routes
+ */
+router.get('/logout', authController.logout);
+
+/**
+ * Twitter Auth Routes
+ */
+router.get('/auth/twitter', authController.twitterLogin);
+router.get('/auth/twitter/callback', (req, res, next) => {
+  console.log("here - 1")
+  next();
+}, authController.twitterAuthCallback, (req, res) => {
+  console.log("here - 2")
+  res.redirect("/wishlist");
+});
 
 module.exports = router;

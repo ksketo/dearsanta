@@ -3,15 +3,23 @@
 @import url(https://fonts.googleapis.com/css?family=Atma);
 @import url(https://fonts.googleapis.com/css?family=Assistant);
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0px;
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100%;
+  background: #235E6F;
 }
 
 .nav a {
   font-family: 'Molle', cursive;
   font-size: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .nav a:hover {
@@ -118,7 +126,7 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  height: 120vh;
+  min-height: 100vh;
   width: 100vw;
   background: #235E6F;
   margin: 0;

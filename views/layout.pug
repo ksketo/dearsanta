@@ -11,14 +11,18 @@ html
         a.brand
           img(src="/images/santa-hat.png" href="/")
       
-      .nav-right
-        a.active(href="/wishlist") My Wishlist
+      .nav-center
+        a.active(href="/wishlist") Wishlist
         a.active(href="/shopping-list") Shopping List
-        a.active(href="/gift-guides") Gift Guide
-        a.button.login-btn(href="#") Join
+        a.active(href="/gift-guides") Gift Guides
+
+      .nav-right
+        if user
+          a(href="/logout") Loggedin
+        else
+          a.button.login-btn(href="#") Join
 
     .content
-      h1= description
       block content
 
     include mixins/_loginForm
