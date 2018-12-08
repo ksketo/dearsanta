@@ -5,12 +5,13 @@ const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 
 const userSchema = new Schema({
-    twitter          : {
-        id           : String,
-        token        : String,
-        displayName  : String,
-        username     : String
-    }
+    twitter: {
+        id: String,
+        token: String,
+        displayName: String,
+        username: String
+    },
+    wishlist: [{ type: String }]
 });
 
 userSchema.plugin(mongodbErrorHandler);

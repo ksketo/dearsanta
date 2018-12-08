@@ -11,10 +11,7 @@ block content
         p All I want for Christmas is:
       
       ul.card__body
-        li Item 1
-        li Item 2 🤑
-        li Item 3 👓
-        li Item 4 😍
+        each item in wishlist
+          li= item
 
-      .add-item
-        input.form-control(type="text" placeholder="Add item...")
+      input.add-item.form-control(name="add-item" type="text" placeholder="Add item...")

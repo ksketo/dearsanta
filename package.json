@@ -8,13 +8,16 @@
     "assets": "webpack -w --display-max-modules 0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dompurify": "^1.0.8",
     "dotenv": "^6.2.0",
     "express": "~4.16.0",
     "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
     "http-errors": "~1.6.2",
     "mongoose": "^5.3.15",
     "mongoose-mongodb-errors": "0.0.2",

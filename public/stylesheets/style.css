@@ -10,6 +10,7 @@ html {
 body {
   margin: 0px;
   padding: 0px;
+  padding-bottom: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 100%;
   background: #235E6F;
@@ -103,17 +104,14 @@ body {
   color: #da5347;
 }
 
-.wishlist__card .add-item {
+.wishlist__card input.add-item {
+  height: 40px;
   margin-top: 40px;
 }
 
-.wishlist__card .add-item input {
-  height: 40px;
-}
-
-.wishlist__card .add-item input:focus,
-.wishlist__card .add-item input:active,
-.wishlist__card .add-item input:active:focus {
+.wishlist__card input.add-item:focus,
+.wishlist__card input.add-item:active,
+.wishlist__card input.add-item:active:focus {
   border: 0.5px solid #f0867c !important;
 }
 
