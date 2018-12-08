@@ -9,13 +9,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/wishlist', async function(req, res, next) {
-  const user = await User.findOne({ _id: req.user.id });
+  if (!req.user) {
+    res.render('index', {
+      title: 'Wishlist',
+      description: "Your Christmas Whishlist"
+    });
+  } else {
+    const user = await User.findOne({ _id: req.user.id });
 
-  res.render('index', {
-    title: 'Wishlist',
-    description: "Your Christmas Whishlist",
-    wishlist: user.wishlist
-  });
+    res.render('index', {
+      title: 'Wishlist',
+      description: "Your Christmas Whishlist",
+      wishlist: user.wishlist
+    });
+  }
 });
 
 router.get('/shopping-list', function(req, res, next) {

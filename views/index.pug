@@ -1,17 +1,25 @@
 extends layout
 
+include mixins/_shareButton
+
 block content
   .wishlist
     .santa-logo
       img(src="/images/santa-claus.png")
 
     .card.wishlist__card
-      .header 
+      if user
+        +shareButton()
+
+      .header
         h2 Dear Santa,
         p All I want for Christmas is:
       
-      ul.card__body
-        each item in wishlist
-          li= item
+        ul.card__body
+          if wishlist
+            each item in wishlist
+              li= item
+          else
+            p No elements added in your wishlist yet!
 
       input.add-item.form-control(name="add-item" type="text" placeholder="Add item...")
