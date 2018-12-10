@@ -25,6 +25,10 @@ router.get('/wishlist', async function(req, res, next) {
   }
 });
 
+router.get('/wishlist/:id', async function(req, res, next) {
+  // TODO:
+});
+
 router.get('/shopping-list', function(req, res, next) {
   res.render('index', {
     title: 'Shopping List',

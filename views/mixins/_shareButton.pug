@@ -1,11 +1,14 @@
 mixin shareButton()
-  .button__share
-    .front
-      p Share
-    .links__share
-      a
-        i.fab.fa-facebook-f.fa-fw
-      a
-        i.fab.fa-twitter.fa-fw
-      a
-        i.fa.fa-link.fa-fw
+  .button__share-wrapper
+    .button__share
+      .front
+        p Share
+      .links__share
+        a#fbShare(href=`https://www.facebook.com/sharer/sharer.php?u=dearsanta.app&t=My Christmas wishlist https://dearsanta.app/wishlist/${user.id}` target="_blank")
+          i.fab.fa-facebook-f.fa-fw
+        a#twitterShare(href=`https://twitter.com/intent/tweet?url=dearsanta.app&text=My Christmas wishlist https://dearsanta.app/wishlist/${user.id}` target="_blank")
+          i.fab.fa-twitter.fa-fw
+        a#copyUrl(href="#" data-url=`https://dearsanta.app/wishlist/${user.id}`)
+          i.fa.fa-link.fa-fw
+
+    #containerCopy Url copied!
