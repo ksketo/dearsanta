@@ -26,7 +26,13 @@ router.get('/wishlist', async function(req, res, next) {
 });
 
 router.get('/wishlist/:id', async function(req, res, next) {
-  // TODO:
+  const user = await User.findOne({ _id: req.params.id }).select("wishlist");
+
+  res.render('index', {
+    title: 'Wishlist',
+    description: "Your Christmas Whishlist",
+    wishlist: user.wishlist
+  });
 });
 
 router.get('/shopping-list', function(req, res, next) {
