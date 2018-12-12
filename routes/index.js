@@ -43,7 +43,7 @@ router.get('/shopping-list', function(req, res, next) {
 });
 
 router.get('/gift-guides', function(req, res, next) {
-  res.render('index', {
+  res.render('gift-guides', {
     title: 'Gift Guides',
     description: "Christmas Gift Guides"
   });
