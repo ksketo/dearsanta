@@ -114,6 +114,18 @@ body {
   color: #717171;
 }
 
+.wishlist__card i.delete {
+  float: right;
+  padding-top: 10px;
+  font-size: 0.6em;
+  color: #F5624D;
+  display: none;
+}
+
+.wishlist__card i.delete:hover {
+  opacity: .8;
+}
+
 .wishlist__card li:nth-child(1) {
   border-top:0;
 }
@@ -124,7 +136,11 @@ body {
 
 .wishlist__card li:hover {
   color: #424242;
+}
+
+.wishlist__card li:hover i.delete {
   cursor: pointer;
+  display: block;
 }
 
 .wishlist__card ::placeholder {

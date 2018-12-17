@@ -929,87 +929,40 @@ module.exports = Cancel;
 
 var _bling = __webpack_require__(9);
 
-var _axios = __webpack_require__(10);
+var _wishlist = __webpack_require__(30);
 
-var _axios2 = _interopRequireDefault(_axios);
+var _copyUrl = __webpack_require__(31);
 
-var _dompurify = __webpack_require__(29);
-
-var _dompurify2 = _interopRequireDefault(_dompurify);
+var _copyUrl2 = _interopRequireDefault(_copyUrl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Login form event handlers
+ */
+
 (0, _bling.$$)(".login-btn") && (0, _bling.$$)(".login-btn").on("click", function (event) {
-    (0, _bling.$)(".social-form").style.display = "block";
+  (0, _bling.$)(".social-form").style.display = "block";
 });
 
 (0, _bling.$)(".social-form").on("click", function (event) {
-    if (event.target.classList.contains("social-form")) {
-        (0, _bling.$)(".social-form").style.display = "none";
-    }
+  if (event.target.classList.contains("social-form")) {
+    (0, _bling.$)(".social-form").style.display = "none";
+  }
 });
 
-function wishlistResultsHTML(wishes) {
-    return wishes.map(function (wish) {
-        return '<li>' + wish + '</li>';
-    }).join('');
-}
+/**
+ * Wishlist event handlers
+ */
 
-(0, _bling.$)(".add-item").addEventListener("keyup", function (event) {
-    event.preventDefault();
+(0, _bling.$)(".add-item").addEventListener("keyup", _wishlist.addWishlistItem);
+(0, _bling.$$)(".delete").on("click", _wishlist.deleteWishlistItem);
 
-    if (event.key === "Enter") {
-        _axios2.default.post("/api/wishlist/add", {
-            item: _dompurify2.default.sanitize(event.target.value)
-        }).then(function (res) {
-            if (res.data.length) {
-                (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
-                (0, _bling.$)(".add-item").value = "";
-                return;
-            }
-        }).catch(console.error);
-    }
-});
+/**
+ * Copy url event handlers
+ */
 
-(0, _bling.$)("#copyUrl").on("click", function (event) {
-    var e = event || window.event;
-    var target = e.currentTarget || e.srcElement;
-    var clickedUrl = target.dataset.url;
-
-    // Animate 'Url copied' on successful copy
-    if (copyToClipboard(clickedUrl)) {
-        if ((0, _bling.$)('#containerCopy').style.opacity == 0) {
-            (0, _bling.$)('#containerCopy').style.opacity = 1;
-
-            setTimeout(function () {
-                (0, _bling.$)('#containerCopy').style.opacity = 0;
-            }, 2000);
-        }
-    }
-});
-
-// Reference: https://stackoverflow.com/a/33928558/4619005
-function copyToClipboard(text) {
-    if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-        var textarea = document.createElement("textarea");
-
-        textarea.textContent = text;
-        textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-            return document.execCommand("copy"); // Security exception may be thrown by some browsers.
-        } catch (ex) {
-            console.warn("Copy to clipboard failed.", ex);
-            return false;
-        } finally {
-            document.body.removeChild(textarea);
-        }
-    } else if (window.clipboardData && window.clipboardData.setData) {
-        // IE specific code path to prevent textarea being shown while dialog is visible.
-        return clipboardData.setData("Text", text);
-    }
-}
+(0, _bling.$)("#copyUrl").on("click", _copyUrl2.default);
 
 /***/ }),
 /* 9 */
@@ -2918,6 +2871,130 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
   return purify;
 });
 //# sourceMappingURL=purify.js.map
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.addWishlistItem = exports.deleteWishlistItem = undefined;
+
+var _axios = __webpack_require__(10);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _dompurify = __webpack_require__(29);
+
+var _dompurify2 = _interopRequireDefault(_dompurify);
+
+var _bling = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function wishlistResultsHTML(wishes) {
+    return wishes.map(function (wish) {
+        return '<li>' + wish + ' <i class="delete fas fa-times" data-value="' + wish + '"></i></li>';
+    }).join('');
+}
+
+function deleteWishlistItem(event) {
+    event.preventDefault();
+
+    _axios2.default.post("/api/wishlist/remove", {
+        item: _dompurify2.default.sanitize(event.target.dataset.value)
+    }).then(function (res) {
+        if (res.data.length) {
+            (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
+
+            var classname = document.getElementsByClassName("delete");
+            for (var i = 0; i < classname.length; i++) {
+                classname[i].addEventListener('click', deleteWishlistItem);
+            }
+        } else {
+            (0, _bling.$)(".card__body").innerHTML = "<p class='warning'> Your wishlist is empty!</p>";
+        }
+    }).catch(console.error);
+}
+
+function addWishlistItem(event) {
+    event.preventDefault();
+
+    if (event.key === "Enter") {
+        _axios2.default.post("/api/wishlist/add", {
+            item: _dompurify2.default.sanitize(event.target.value)
+        }).then(function (res) {
+            if (res.data.length) {
+                (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
+                (0, _bling.$)(".add-item").value = "";
+
+                var classname = document.getElementsByClassName("delete");
+                for (var i = 0; i < classname.length; i++) {
+                    classname[i].addEventListener('click', deleteWishlistItem);
+                }
+            }
+        }).catch(console.error);
+    }
+}
+
+exports.deleteWishlistItem = deleteWishlistItem;
+exports.addWishlistItem = addWishlistItem;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+// Reference: https://stackoverflow.com/a/33928558/4619005
+function copyToClipboard(text) {
+    if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+
+        textarea.textContent = text;
+        textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+        } catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    } else if (window.clipboardData && window.clipboardData.setData) {
+        // IE specific code path to prevent textarea being shown while dialog is visible.
+        return clipboardData.setData("Text", text);
+    }
+}
+
+function copyUrlEventHandler(event) {
+    var e = event || window.event;
+    var target = e.currentTarget || e.srcElement;
+    var clickedUrl = target.dataset.url;
+
+    // Animate 'Url copied' on successful copy
+    if (copyToClipboard(clickedUrl)) {
+        if ($('#containerCopy').style.opacity == 0) {
+            $('#containerCopy').style.opacity = 1;
+
+            setTimeout(function () {
+                $('#containerCopy').style.opacity = 0;
+            }, 2000);
+        }
+    }
+}
+
+exports.default = copyUrlEventHandler;
 
 /***/ })
 /******/ ]);

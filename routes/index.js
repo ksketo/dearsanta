@@ -72,6 +72,28 @@ router.post("/api/wishlist/add", async (req, res) => {
   } else {
     res.redirect("/wishlist");
   }
+});
+
+router.post("/api/wishlist/remove", async (req, res) => {
+  req.sanitizeBody('item');
+  req.checkBody('item', 'You must supply an item').notEmpty();
+  req.checkBody('item', 'You must supply a string').isString();
+  const errors = req.validationErrors();
+
+  if (!errors) {
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      { ["$pull"]: { wishlist: req.body.item }},
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+
+    res.json(user.wishlist);
+  } else {
+    res.redirect("/wishlist");
+  }
 })
 
 /**
