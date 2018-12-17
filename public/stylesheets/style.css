@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
 @import url(https://fonts.googleapis.com/css?family=Atma);
 @import url(https://fonts.googleapis.com/css?family=Assistant);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
 html {
   height: 100%;
@@ -582,19 +583,15 @@ a:hover {
   width: 100%;
   position: absolute;
   top: 0px;
-  -webkit-transition-delay: 0.2s;
-  transition-delay: 0.2s;
 }
 
 .gift:hover .gift_top {
   top: -50px;
-  -webkit-transition-delay: 0.3s;
-  transition-delay: 0.3s;
 }
 
 .gift_box_bottom_top {
-  -webkit-transition-delay: 0.5s;
-  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
 }
 
 .gift:hover .gift_box_bottom_top {
@@ -602,20 +599,18 @@ a:hover {
   opacity: 0;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s;
   o-transition: all 0.3s ease-in-out;
 }
 
 .giftcard {
   border-radius: 5px;
-  background: #fff;
-  box-shadow: 0px 1px 0px 1px #fee4c0;
+  background-color: #2b3990;
   padding: 10px;
   width: 100px;
   font-size: 15px;
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #ff3f48;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold; 
+  color: #FFF;
   left: 0px;
   top: 100px;
   right: 0px;
@@ -623,11 +618,16 @@ a:hover {
   position: absolute;
   z-index: -1;
   text-align: center;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  -webkit-transition-delay: 0.25s;
-  transition-delay: 0.25s;
-  o-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  o-transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.giftcard:hover {
+  -webkit-transition: 0s;
+  transition: 0s ease-out;
+  o-transition: 0s;
 }
 
 .gift:hover .giftcard {
