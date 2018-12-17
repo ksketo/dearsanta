@@ -5,18 +5,12 @@ include mixins/_wrap
 block content
 
   .wrap-content
-    .row.wrap-row
-      .col
-        +wrap()
-      .col
-        +wrap()
-      .col
-        +wrap()
-
-    .row.wrap-row
-      .col
-        +wrap()
-      .col
-        +wrap()
-      .col
-        +wrap()
+      each guide, index in guides
+        - var newRow = index % 3 == 0
+        - var lastRow = index % 3 == 2
+        if newRow
+          <div class="row wrap-row">
+        .col
+          +wrap(guide)
+        if lastRow
+          </div>

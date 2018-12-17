@@ -1,6 +1,6 @@
-mixin wrap()
+mixin wrap(guide)
   section.gift
-    a.giftcard(href="#" target="_blank") Stay Sweet
+    a.giftcard(href=`${guide.url}` target="_blank")= guide.label
 
     section.gift_top
       .ribbon_right
