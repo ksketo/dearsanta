@@ -939,7 +939,7 @@ var _dompurify2 = _interopRequireDefault(_dompurify);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _bling.$)(".login-btn") && (0, _bling.$)(".login-btn").on("click", function (event) {
+(0, _bling.$$)(".login-btn") && (0, _bling.$$)(".login-btn").on("click", function (event) {
     (0, _bling.$)(".social-form").style.display = "block";
 });
 

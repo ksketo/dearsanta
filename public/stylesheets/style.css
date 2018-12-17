@@ -74,13 +74,33 @@ body {
   font-size: 1.2em;
 }
 
-.wishlist__card ul {
+.wishlist__card .card__body {
   list-style-type: none;
   font-family: "Atma", cursive;
   padding: 0;
   margin: 0;
   margin-top: 30px;
   position: relative;
+}
+
+.wishlist__card .card__body .warning {
+  background: #ffffcc;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0.2px solid #f4d03f;
+  font-family: "Atma", cursive;
+  font-size: 1.1em;
+  color: #6c7a89;
+}
+
+.wishlist__card .card__body .warning a.login-btn{
+  cursor: pointer;
+  text-decoration: underline;
+  color: green;
+}
+
+.wishlist__card ul {
+  list-style-type: none;
 }
 
 .wishlist__card li {
@@ -274,7 +294,7 @@ body {
   top: 0;
   height: 120vh;
   width: 100vw;
-  z-index: 1;
+  z-index: 20;
   background-color: rgba(0, 0, 0, 0.9);;
   display: none;
 }

@@ -15,11 +15,19 @@ block content
         h2 Dear Santa,
         p All I want for Christmas is:
       
-        ul.card__body
-          if wishlist
-            each item in wishlist
-              li= item
+        .card__body
+          if user
+            ul
+              if wishlist.length
+                each item in wishlist
+                  li= item
+              else
+                p.warning Your wishlist is empty!
           else
-            p No elements added in your wishlist yet!
+            p.warning
+              | You need to 
+              a.login-btn(href="#") log in
+              |  first to add items
 
-      input.add-item.form-control(name="add-item" type="text" placeholder="Add item...")
+      if user
+        input.add-item.form-control(name="add-item" type="text" placeholder="Add item...")

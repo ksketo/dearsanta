@@ -2,7 +2,7 @@ import { $, $$ } from './modules/bling';
 import axios from 'axios';
 import dompurify from 'dompurify';
 
-$(".login-btn") && $(".login-btn").on("click", (event) => {
+$$(".login-btn") && $$(".login-btn").on("click", (event) => {
     $(".social-form").style.display = "block";
 });
 
