@@ -972,13 +972,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 (0, _bling.$$)(".login-btn") && (0, _bling.$$)(".login-btn").on("click", function (event) {
-  (0, _bling.$)(".social-form").style.display = "block";
-});
-
-(0, _bling.$)(".social-form").on("click", function (event) {
-  if (event.target.classList.contains("social-form")) {
-    (0, _bling.$)(".social-form").style.display = "none";
-  }
+    if ((0, _bling.$)(".loginBox").style.display === "none") {
+        (0, _bling.$)(".loginBox").style.display = "block";
+        (0, _bling.$)(".loginBox").classList.add("animated", "bounceIn", "faster");
+    } else if ((0, _bling.$)(".loginBox").style.display === "block") {
+        (0, _bling.$)(".loginBox").classList.remove("bounceIn");
+        (0, _bling.$)(".loginBox").classList.add("animated", "bounceOut", "faster");
+        setTimeout(function () {
+            (0, _bling.$)(".loginBox").classList.remove("bounceOut");
+            (0, _bling.$)(".loginBox").style.display = "none";
+        }, 1000);
+    }
 });
 
 /**

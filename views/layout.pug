@@ -5,9 +5,12 @@ html
     link(rel='stylesheet', href="https://unpkg.com/chota")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css")
     link(rel="shortcut icon" type="image/png" href="/images/santa-hat.png")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
+
+    include mixins/_loginForm
 
     nav.nav
       .nav-left
@@ -24,15 +27,13 @@ html
             img#profile-img(src=`${user.avatar}`)
         else
           a.button.primary.login-btn(href="#") Join
+          +loginForm()
 
     .content
       block content
 
-    include mixins/_loginForm
     include mixins/_snowFlakes
-
     +snowFlakes()
-    +loginForm()
 
     block scripts
       script(src="/dist/App.bundle.js")

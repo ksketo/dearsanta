@@ -1,11 +1,9 @@
 mixin loginForm()
-  .social-form
-    form
-      h1 Social Form
-      input(placeholder="Username" type="text")
-      input(placeholder="Password" type="password")
-      button.btn Log in
-      h6 Oh Social
-      .social
-        a.button.btn.tw(href="/auth/twitter") Twitter
-        a.button.btn.google.fb Google
+  .loginBox(class="" style="display: none;")
+    .socialMedia
+      a(href="/auth/twitter")
+        i.fab.fa-twitter
+      a(href="#")
+        i.fab.fa-facebook-square
+      a(href="#")
+        i.fab.fa-google-plus

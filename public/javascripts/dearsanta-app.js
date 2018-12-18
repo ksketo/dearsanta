@@ -7,12 +7,16 @@ import copyUrlEventHandler from "./modules/copyUrl";
  */
 
 $$(".login-btn") && $$(".login-btn").on("click", (event) => {
-    $(".social-form").style.display = "block";
-});
-
-$(".social-form").on("click", (event) => {
-    if (event.target.classList.contains("social-form")) {
-        $(".social-form").style.display = "none";
+    if ($(".loginBox").style.display === "none") {
+        $(".loginBox").style.display = "block";
+        $(".loginBox").classList.add("animated", "bounceIn", "faster");
+    } else if ($(".loginBox").style.display === "block") {
+        $(".loginBox").classList.remove("bounceIn");
+        $(".loginBox").classList.add("animated", "bounceOut", "faster");
+        setTimeout(() => {
+            $(".loginBox").classList.remove("bounceOut");
+            $(".loginBox").style.display = "none";
+        }, 1000);
     }
 });
 
