@@ -35,13 +35,6 @@ router.get('/wishlist/:id', async function(req, res, next) {
   });
 });
 
-router.get('/shopping-list', function(req, res, next) {
-  res.render('index', {
-    title: 'Shopping List',
-    description: "Your Christmas Shopping List"
-  });
-});
-
 router.get('/gift-guides', function(req, res, next) {
   const guides = require("../public/data/gift-guides.json");
 

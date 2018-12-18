@@ -28,6 +28,13 @@ body {
   cursor: pointer;
 }
 
+#profile-img {
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border: 3px solid #0F8A5F;
+}
+
 .content {
   margin: 50px;
 }

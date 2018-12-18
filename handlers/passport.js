@@ -15,7 +15,8 @@ passport.use(new TwitterStrategy({
             id: profile.id,
             token: token,
             username: profile.username,
-            displayName: profile.displayName
+            displayName: profile.displayName,
+            photos: profile.photos
         }
     };
 

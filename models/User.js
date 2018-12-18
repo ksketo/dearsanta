@@ -8,9 +8,27 @@ const userSchema = new Schema({
         id: String,
         token: String,
         displayName: String,
-        username: String
+        username: String,
+        photos: [{ value: String }]
     },
     wishlist: [{ type: String }]
+});
+
+userSchema.virtual('avatar').get(function() {
+    let photo;
+
+    try {
+        if (this.twitter) {
+            photo = this.twitter.photos[0].value.replace("normal", "bigger");
+        } else {
+            photo = "/images/santa-claus.png";
+        }
+    } catch (err) {
+        console.error(err);
+        photo = "/images/santa-claus.png";
+    }
+
+    return photo;
 });
 
 userSchema.plugin(mongodbErrorHandler);
