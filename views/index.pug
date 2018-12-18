@@ -30,5 +30,4 @@ block content
               a.login-btn(href="#") log in
               |  first to add items
 
-      if user
-        input.add-item.form-control(name="add-item" type="text" placeholder="Add item...")
+      input.add-item.form-control(name="add-item" type="text" placeholder="Add item..." disabled=!user)

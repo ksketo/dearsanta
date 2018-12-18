@@ -156,6 +156,10 @@ body {
   bottom: 20px;
 }
 
+.wishlist__card input.add-item:disabled {
+  background:#F5F5F5;
+}
+
 .wishlist__card input.add-item:focus,
 .wishlist__card input.add-item:active,
 .wishlist__card input.add-item:active:focus {
