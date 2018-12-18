@@ -20,11 +20,11 @@ $(".social-form").on("click", (event) => {
  * Wishlist event handlers
  */
 
-$(".add-item").addEventListener("keyup", addWishlistItem);
-$$(".delete").on("click", deleteWishlistItem);
+$(".add-item") && $(".add-item").addEventListener("keyup", addWishlistItem);
+$$(".delete") && $$(".delete").on("click", deleteWishlistItem);
 
 /**
  * Copy url event handlers
  */
 
-$("#copyUrl").on("click", copyUrlEventHandler);
+$("#copyUrl") && $("#copyUrl").on("click", copyUrlEventHandler);

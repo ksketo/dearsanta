@@ -985,14 +985,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Wishlist event handlers
  */
 
-(0, _bling.$)(".add-item").addEventListener("keyup", _wishlist.addWishlistItem);
-(0, _bling.$$)(".delete").on("click", _wishlist.deleteWishlistItem);
+(0, _bling.$)(".add-item") && (0, _bling.$)(".add-item").addEventListener("keyup", _wishlist.addWishlistItem);
+(0, _bling.$$)(".delete") && (0, _bling.$$)(".delete").on("click", _wishlist.deleteWishlistItem);
 
 /**
  * Copy url event handlers
  */
 
-(0, _bling.$)("#copyUrl").on("click", _copyUrl2.default);
+(0, _bling.$)("#copyUrl") && (0, _bling.$)("#copyUrl").on("click", _copyUrl2.default);
 
 /***/ }),
 /* 10 */
