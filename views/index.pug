@@ -18,10 +18,9 @@ block content
         .card__body
           if user
             if wishlist.length
-              ul
-                each item in wishlist
-                  li= item
-                    i.delete(data-value=`${item}`).fas.fa-times
+              each item in wishlist
+                li= item
+                  i.delete(data-value=`${item}`).fas.fa-times
             else
               p.warning Your wishlist is empty!
           else

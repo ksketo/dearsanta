@@ -101,7 +101,18 @@ router.get('/auth/twitter', authController.twitterLogin);
 router.get('/auth/twitter/callback', (req, res, next) => {
   next();
 }, authController.twitterAuthCallback, (req, res) => {
-  res.redirect("/wishlist");
+  res.redirect('/wishlist');
+});
+
+/**
+ * Google Auth Routes
+ */
+router.get('/auth/google', authController.googleLogin);
+router.get('/auth/google/callback',
+  authController.googleAuthCallback,
+  (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect('/wishlist');
 });
 
 module.exports = router;
