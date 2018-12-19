@@ -24,6 +24,7 @@ html
       .nav-right
         if user
           a(href="/logout")
+            span.img-label Logout
             img#profile-img(src=`${user.avatar}`)
         else
           a.button.primary.login-btn(href="#") Join
