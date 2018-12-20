@@ -3,7 +3,7 @@
     "name": "dearsanta-app",
     "alias": ["dearsanta.app", "www.dearsanta.app"],
     "env": {
-        "DATABASE": "mongodb+srv://@database/test?retryWrites=true",
+        "DATABASE": "@database",
         "PORT": "80",
         "SECRET": "@session-secret",
         "KEY": "@session-key",
