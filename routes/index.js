@@ -12,7 +12,8 @@ router.get('/wishlist', async function(req, res, next) {
   if (!req.user) {
     res.render('index', {
       title: 'Wishlist',
-      description: "Your Christmas Whishlist"
+      description: "Your Christmas Whishlist",
+      wishlist: []
     });
   } else {
     const user = await User.findOne({ _id: req.user.id });
@@ -26,13 +27,22 @@ router.get('/wishlist', async function(req, res, next) {
 });
 
 router.get('/wishlist/:id', async function(req, res, next) {
-  const user = await User.findOne({ _id: req.params.id }).select("wishlist");
-
-  res.render('index', {
-    title: 'Wishlist',
-    description: "Your Christmas Whishlist",
-    wishlist: user.wishlist
-  });
+  try {
+    const user = await User.findOne({ _id: req.params.id }).select("wishlist");
+  
+    if (user) {
+      res.render('index', {
+        title: 'Wishlist',
+        description: "Your Christmas Whishlist",
+        wishlist: user.wishlist
+      });
+    } else {
+      res.redirect('/wishlist');
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.redirect('/wishlist');
+  }
 });
 
 router.get('/gift-guides', function(req, res, next) {

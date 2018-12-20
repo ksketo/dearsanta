@@ -16,17 +16,17 @@ block content
         p All I want for Christmas is:
       
         .card__body
-          if user
-            if wishlist.length
-              each item in wishlist
-                li= item
-                  i.delete(data-value=`${item}`).fas.fa-times
-            else
-              p.warning Your wishlist is empty!
+          if wishlist.length
+            each item in wishlist
+              li= item
+                i.delete(data-value=`${item}`).fas.fa-times
           else
-            p.warning
-              | You need to 
-              a.login-btn(href="#") log in
-              |  first to add items
+            if user
+              p.warning Your wishlist is empty!
+            else
+              p.warning
+                | You need to 
+                a.login-btn(href="#") log in
+                |  first to add items
 
       input.add-item.form-control(name="add-item" type="text" placeholder="Add item..." disabled=!user)
