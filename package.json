@@ -1,9 +1,10 @@
 {
   "name": "dearsanta",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
+    "start": "node ./bin/www",
+    "dev": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
     "watch": "nodemon ./bin/www --ignore public/",
     "assets": "webpack -w --display-max-modules 0"
   },
