@@ -1,3 +1,5 @@
+import { $, $$ } from "./bling";
+
 // Reference: https://stackoverflow.com/a/33928558/4619005
 function copyToClipboard(text) {
     if (document.queryCommandSupported && document.queryCommandSupported("copy")) {

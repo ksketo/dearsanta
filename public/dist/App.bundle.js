@@ -2958,6 +2958,9 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _bling = __webpack_require__(2);
+
 // Reference: https://stackoverflow.com/a/33928558/4619005
 function copyToClipboard(text) {
     if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
@@ -2988,11 +2991,11 @@ function copyUrlEventHandler(event) {
 
     // Animate 'Url copied' on successful copy
     if (copyToClipboard(clickedUrl)) {
-        if ($('#containerCopy').style.opacity == 0) {
-            $('#containerCopy').style.opacity = 1;
+        if ((0, _bling.$)('#containerCopy').style.opacity == 0) {
+            (0, _bling.$)('#containerCopy').style.opacity = 1;
 
             setTimeout(function () {
-                $('#containerCopy').style.opacity = 0;
+                (0, _bling.$)('#containerCopy').style.opacity = 0;
             }, 2000);
         }
     }
