@@ -1,26 +1,51 @@
 [
     {
-        "label": "Label A",
-        "url": "https://www.google.com"
+        "label": "Travellers",
+        "url": "https://hippie-inheels.com/christmas-gift-ideas-for-travelers/"
     },
     {
-        "label": "Label B",
-        "url": "https://www.twitter.com"
+        "label": "Coders",
+        "url": "https://blog.teamtreehouse.com/great-gifts-for-programmers"
     },
     {
-        "label": "Label A",
-        "url": "https://www.google.com"
+        "label": "YC",
+        "url": "http://www.ycgiftideas.com"
     },
     {
-        "label": "Label B",
-        "url": "https://www.twitter.com"
+        "label": "Beauty",
+        "url": "https://www.vogue.co.uk/gallery/the-most-luxurious-christmas-gifts-for-beauty-fanatics"
     },
     {
-        "label": "Label A",
-        "url": "https://www.google.com"
+        "label": "Crypto Currencies",
+        "url": "https://blockexplorer.com/news/bitcoin-christmas-gift-guide/"
     },
     {
-        "label": "Label B",
-        "url": "https://www.twitter.com"
+        "label": "Book Lovers",
+        "url": "https://www.esquire.com/lifestyle/g23477356/best-gifts-for-book-lovers/"
+    },
+
+    {
+        "label": "Romantic",
+        "url": "https://www.telegraph.co.uk/christmas/0/romantic-christmas-gifts-unique-present-ideas-love-life/"
+    },
+    {
+        "label": "TV Lovers",
+        "url": "https://www.channelmaster.com/best-christmas-gifts-for-tv-lovers-a/387.htm"
+    },
+    {
+        "label": "Brexit",
+        "url": "https://www.zazzle.co.uk/brexit+gifts"
+    },
+    {
+        "label": "Drinkers",
+        "url": "https://www.buzzfeed.com/emofly/gifts-for-people-who-love-to-drink"
+    },
+    {
+        "label": "Founders",
+        "url": "https://www.entrepreneur.com/article/283660"
+    },
+    {
+        "label": "Investors",
+        "url": "https://www.investopedia.com/articles/06/financialgeekgifts.asp"
     }
 ]
