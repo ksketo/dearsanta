@@ -965,6 +965,10 @@ var _copyUrl = __webpack_require__(31);
 
 var _copyUrl2 = _interopRequireDefault(_copyUrl);
 
+var _wrap = __webpack_require__(32);
+
+var _wrap2 = _interopRequireDefault(_wrap);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -972,17 +976,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 (0, _bling.$$)(".login-btn") && (0, _bling.$$)(".login-btn").on("click", function (event) {
-    if ((0, _bling.$)(".loginBox").style.display === "none") {
-        (0, _bling.$)(".loginBox").style.display = "block";
-        (0, _bling.$)(".loginBox").classList.add("animated", "bounceIn", "faster");
-    } else if ((0, _bling.$)(".loginBox").style.display === "block") {
-        (0, _bling.$)(".loginBox").classList.remove("bounceIn");
-        (0, _bling.$)(".loginBox").classList.add("animated", "bounceOut", "faster");
-        setTimeout(function () {
-            (0, _bling.$)(".loginBox").classList.remove("bounceOut");
-            (0, _bling.$)(".loginBox").style.display = "none";
-        }, 1000);
-    }
+  if ((0, _bling.$)(".loginBox").style.opacity === "0") {
+    (0, _bling.$)(".loginBox").style.opacity = "1";
+    (0, _bling.$)(".loginBox").classList.add("animated", "bounceIn", "faster");
+  } else if ((0, _bling.$)(".loginBox").style.opacity === "1") {
+    (0, _bling.$)(".loginBox").classList.remove("bounceIn");
+    (0, _bling.$)(".loginBox").classList.add("animated", "bounceOut", "faster");
+    setTimeout(function () {
+      (0, _bling.$)(".loginBox").classList.remove("bounceOut");
+      (0, _bling.$)(".loginBox").style.opacity = "0";
+    }, 1000);
+  }
 });
 
 /**
@@ -990,6 +994,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 (0, _bling.$)(".add-item") && (0, _bling.$)(".add-item").addEventListener("keyup", _wishlist.addWishlistItem);
+(0, _bling.$)("#add-item-btn") && (0, _bling.$)("#add-item-btn").on("click", _wishlist.addWishlistItem);
 (0, _bling.$$)(".delete") && (0, _bling.$$)(".delete").on("click", _wishlist.deleteWishlistItem);
 
 /**
@@ -997,6 +1002,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 (0, _bling.$)("#copyUrl") && (0, _bling.$)("#copyUrl").on("click", _copyUrl2.default);
+
+/**
+ * Gift wrap event handlers
+ */
+
+(0, _bling.$$)(".gift") && (0, _bling.$$)(".gift").on("click", _wrap2.default);
 
 /***/ }),
 /* 10 */
@@ -1048,11 +1059,14 @@ function deleteWishlistItem(event) {
 }
 
 function addWishlistItem(event) {
+    var e = event || window.event;
+    var target = e.currentTarget || e.srcElement;
+
     event.preventDefault();
 
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || target.id === "add-item-btn" && event.type === "click") {
         _axios2.default.post("/api/wishlist/add", {
-            item: _dompurify2.default.sanitize(event.target.value)
+            item: _dompurify2.default.sanitize((0, _bling.$)(".add-item").value)
         }).then(function (res) {
             if (res.data.length) {
                 (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
@@ -3002,6 +3016,31 @@ function copyUrlEventHandler(event) {
 }
 
 exports.default = copyUrlEventHandler;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function openInNewTab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+function unwrap(event) {
+    var e = event || window.event;
+    var target = e.currentTarget || e.srcElement;
+    var url = target.dataset.url;
+
+    openInNewTab(url);
+}
+
+exports.default = unwrap;
 
 /***/ })
 /******/ ]);

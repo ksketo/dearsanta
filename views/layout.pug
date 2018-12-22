@@ -27,8 +27,9 @@ html
             span.img-label Logout
             img#profile-img(src=`${user.avatar}`)
         else
-          a.button.primary.login-btn(href="#") Join
-          +loginForm()
+          .is-vertical-align
+            a.button.primary.login-btn(href="#") Sign in
+            +loginForm()
 
     .content
       block content

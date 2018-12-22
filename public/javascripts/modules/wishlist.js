@@ -31,12 +31,15 @@ function deleteWishlistItem(event) {
 }
 
 function addWishlistItem(event) {
+    const e = event || window.event;
+    const target = e.currentTarget || e.srcElement;
+
     event.preventDefault();
 
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || (target.id === "add-item-btn" && event.type === "click")) {
         axios
             .post("/api/wishlist/add", {
-                item: dompurify.sanitize(event.target.value)
+                item: dompurify.sanitize($(".add-item").value)
             })
             .then(res => {
                 if (res.data.length) {

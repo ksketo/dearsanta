@@ -32,8 +32,7 @@ body {
 }
 
 #profile-img {
-  width:50px;
-  height:50px;
+  min-width:50px;
   border-radius:50%;
   border: 3px solid #0F8A5F;
 }
@@ -59,10 +58,15 @@ body {
   margin-right: 10px;
 }
 
+.nav-right a.login-btn {
+  position: absolute;
+}
+
 .loginBox {
-  position: fixed;
-  top: 90px;
-  right: 10px;
+  position: relative;
+  top: 70px;
+  right: 20px;
+  margin: 20px;
   width: 150px;
   background: #68c3a3;
   border-radius: 6px;
@@ -101,6 +105,13 @@ body {
   margin: 50px;
 }
 
+@media only screen and (max-width: 500px) {
+  .content {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 .content h1 {
   text-align: center;
   font-family: 'Molle', cursive;
@@ -121,6 +132,14 @@ body {
   box-shadow:0px 5px 15px rgba(0,0,0,0.2);
   border-radius:2px;
   position: relative;
+}
+
+@media only screen and (max-width: 500px) {
+  .wishlist, .wishlist__card {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .wishlist .santa-logo img{
@@ -209,6 +228,12 @@ body {
   display: block;
 }
 
+@media (hover: none) {
+  .wishlist__card i.delete {
+    display: block;
+  }
+}
+
 .wishlist__card ::placeholder {
   color: #da5347;
 }
@@ -216,7 +241,6 @@ body {
 .wishlist__card input.add-item {
   height: 40px;
   max-width: 80%; 
-  margin-top: 40px;
   position: absolute;
   bottom: 20px;
 }
@@ -229,6 +253,25 @@ body {
 .wishlist__card input.add-item:active,
 .wishlist__card input.add-item:active:focus {
   border: 0.5px solid #f0867c !important;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+#add-item-btn {
+  position: absolute;
+  bottom: 32px;
+  width: 10%;
+  padding-right: 20px;
+}
+
+#add-item-btn i {
+  cursor: pointer;
+  color: grey;
+}
+
+#add-item-btn i:hover {
+  opacity: 0.8;
 }
 
 /*
@@ -268,15 +311,6 @@ body {
   animation-timing-function: ease-in;
   display: inline-block;
   margin: 30px;
-}
-
-.ground {
-  background-color: #E0F0EF;
-  height: 50px;
-  width: 100vw;
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 
 .circle2 {
@@ -355,6 +389,16 @@ body {
   position: absolute;
   top: 0;
   left: 750px;
+}
+
+@media only screen and (max-width: 1100px) {
+  [class*="circle1"] {
+    display: none;
+  }
+
+  [class*="circle"] {
+    left: 0;
+  }
 }
 
 @keyframes rainDown {
@@ -441,6 +485,16 @@ body {
   transition-delay: 50ms;
 }
 
+@media (hover: none) {
+  .front {
+    transform: translateX(-100%);
+  }
+  .button__share .links__share a {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .button__share .links__share a:hover {
   color: #444;
   cursor: pointer;
@@ -478,6 +532,17 @@ body {
   height: 180px;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrap-row {
+    margin-top: 0px;
+  }
+
+  .gift {
+    margin-top: 50px;
+  }
 }
 
 .ribbon_right {
@@ -583,4 +648,11 @@ body {
 
 .gift:hover .giftcard {
   top: 20px;
+}
+
+@media (hover:none) {
+  .giftcard {
+    z-index: 10;
+    background-color: rgb(43, 57, 144, 0.5);
+  }
 }

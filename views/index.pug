@@ -26,7 +26,10 @@ block content
             else
               p.warning
                 | You need to 
-                a.login-btn(href="#") log in
+                a.login-btn(href="#") sign in
                 |  first to add items
 
       input.add-item.form-control(name="add-item" type="text" placeholder="Add item..." disabled=!user)
+      .is-right
+        span.is-right#add-item-btn
+          i.fas.fa-plus       

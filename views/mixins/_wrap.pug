@@ -1,5 +1,5 @@
 mixin wrap(guide)
-  section.gift
+  section.gift(data-url=`${guide.url}`)
     a.giftcard(href=`${guide.url}` target="_blank")= guide.label
 
     section.gift_top
