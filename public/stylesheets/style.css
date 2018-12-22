@@ -120,6 +120,38 @@ body {
 }
 
 /*
+  MADE BY LABEL
+*/
+
+a.by {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #22313f;
+  border-left: 1px solid #22313f;
+  border-top: 1px solid #22313f;
+  border-top-left-radius: 5px;
+  color: #e4e9ed;
+  font-weight: 800;
+  padding: .5em;
+  text-decoration: none currentcolor solid;
+  z-index: 80;
+}
+
+.by img {
+  border-radius: 2em;
+  vertical-align: middle;
+  width: 1.5em;
+}
+
+.by p {
+  display: inline;
+  font-weight: 400;
+  margin: 0 0 0 .5em;
+  vertical-align: middle;
+}
+
+/*
   WISHLIST CARD
 */
 
