@@ -975,39 +975,51 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Login form event handlers
  */
 
-(0, _bling.$$)(".login-btn") && (0, _bling.$$)(".login-btn").on("click", function (event) {
-  if ((0, _bling.$)(".loginBox").style.opacity === "0") {
-    (0, _bling.$)(".loginBox").style.opacity = "1";
-    (0, _bling.$)(".loginBox").classList.add("animated", "bounceIn", "faster");
-  } else if ((0, _bling.$)(".loginBox").style.opacity === "1") {
-    (0, _bling.$)(".loginBox").classList.remove("bounceIn");
-    (0, _bling.$)(".loginBox").classList.add("animated", "bounceOut", "faster");
-    setTimeout(function () {
-      (0, _bling.$)(".loginBox").classList.remove("bounceOut");
-      (0, _bling.$)(".loginBox").style.opacity = "0";
-    }, 1000);
-  }
-});
+if ((0, _bling.$$)(".login-btn")) {
+  (0, _bling.$$)(".login-btn").on("click", function () {
+    if ((0, _bling.$)(".loginBox").style.opacity === "0") {
+      (0, _bling.$)(".loginBox").style.opacity = "1";
+      (0, _bling.$)(".loginBox").classList.add("animated", "bounceIn", "faster");
+    } else if ((0, _bling.$)(".loginBox").style.opacity === "1") {
+      (0, _bling.$)(".loginBox").classList.remove("bounceIn");
+      (0, _bling.$)(".loginBox").classList.add("animated", "bounceOut", "faster");
+      setTimeout(function () {
+        (0, _bling.$)(".loginBox").classList.remove("bounceOut");
+        (0, _bling.$)(".loginBox").style.opacity = "0";
+      }, 1000);
+    }
+  });
+}
 
 /**
  * Wishlist event handlers
  */
 
-(0, _bling.$)(".add-item") && (0, _bling.$)(".add-item").addEventListener("keyup", _wishlist.addWishlistItem);
-(0, _bling.$)("#add-item-btn") && (0, _bling.$)("#add-item-btn").on("click", _wishlist.addWishlistItem);
-(0, _bling.$$)(".delete") && (0, _bling.$$)(".delete").on("click", _wishlist.deleteWishlistItem);
+if ((0, _bling.$)(".add-item")) {
+  (0, _bling.$)(".add-item").addEventListener("keyup", _wishlist.addWishlistItem);
+}
+if ((0, _bling.$)("#add-item-btn")) {
+  (0, _bling.$)("#add-item-btn").on("click", _wishlist.addWishlistItem);
+}
+if ((0, _bling.$$)(".delete")) {
+  (0, _bling.$$)(".delete").on("click", _wishlist.deleteWishlistItem);
+}
 
 /**
  * Copy url event handlers
  */
 
-(0, _bling.$)("#copyUrl") && (0, _bling.$)("#copyUrl").on("click", _copyUrl2.default);
+if ((0, _bling.$)("#copyUrl")) {
+  (0, _bling.$)("#copyUrl").on("click", _copyUrl2.default);
+}
 
 /**
  * Gift wrap event handlers
  */
 
-(0, _bling.$$)(".gift") && (0, _bling.$$)(".gift").on("click", _wrap2.default);
+if ((0, _bling.$$)(".gift")) {
+  (0, _bling.$$)(".gift").on("click", _wrap2.default);
+}
 
 /***/ }),
 /* 10 */
@@ -1017,7 +1029,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.addWishlistItem = exports.deleteWishlistItem = undefined;
 
@@ -1034,51 +1046,51 @@ var _bling = __webpack_require__(1);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function wishlistResultsHTML(wishes) {
-    return wishes.map(function (wish) {
-        return '<li>' + wish + ' <i class="delete fas fa-times" data-value="' + wish + '"></i></li>';
-    }).join('');
+  return wishes.map(function (wish) {
+    return "<li>" + wish + " <i class=\"delete fas fa-times\" data-value=\"" + wish + "\"></i></li>";
+  }).join("");
 }
 
 function deleteWishlistItem(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    _axios2.default.post("/api/wishlist/remove", {
-        item: _dompurify2.default.sanitize(event.target.dataset.value)
-    }).then(function (res) {
-        if (res.data.length) {
-            (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
+  _axios2.default.post("/api/wishlist/remove", {
+    item: _dompurify2.default.sanitize(event.target.dataset.value)
+  }).then(function (res) {
+    if (res.data.length) {
+      (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
 
-            var classname = document.getElementsByClassName("delete");
-            for (var i = 0; i < classname.length; i++) {
-                classname[i].addEventListener('click', deleteWishlistItem);
-            }
-        } else {
-            (0, _bling.$)(".card__body").innerHTML = "<p class='warning'> Your wishlist is empty!</p>";
-        }
-    }).catch(console.error);
+      var classname = document.getElementsByClassName("delete");
+      for (var i = 0; i < classname.length; i += 1) {
+        classname[i].addEventListener("click", deleteWishlistItem);
+      }
+    } else {
+      (0, _bling.$)(".card__body").innerHTML = "<p class='warning'> Your wishlist is empty!</p>";
+    }
+  }).catch(console.error);
 }
 
 function addWishlistItem(event) {
-    var e = event || window.event;
-    var target = e.currentTarget || e.srcElement;
+  var e = event || window.event;
+  var target = e.currentTarget || e.srcElement;
 
-    event.preventDefault();
+  event.preventDefault();
 
-    if (event.key === "Enter" || target.id === "add-item-btn" && event.type === "click") {
-        _axios2.default.post("/api/wishlist/add", {
-            item: _dompurify2.default.sanitize((0, _bling.$)(".add-item").value)
-        }).then(function (res) {
-            if (res.data.length) {
-                (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
-                (0, _bling.$)(".add-item").value = "";
+  if (event.key === "Enter" || target.id === "add-item-btn" && event.type === "click") {
+    _axios2.default.post("/api/wishlist/add", {
+      item: _dompurify2.default.sanitize((0, _bling.$)(".add-item").value)
+    }).then(function (res) {
+      if (res.data.length) {
+        (0, _bling.$)(".card__body").innerHTML = wishlistResultsHTML(res.data);
+        (0, _bling.$)(".add-item").value = "";
 
-                var classname = document.getElementsByClassName("delete");
-                for (var i = 0; i < classname.length; i++) {
-                    classname[i].addEventListener('click', deleteWishlistItem);
-                }
-            }
-        }).catch(console.error);
-    }
+        var classname = document.getElementsByClassName("delete");
+        for (var i = 0; i < classname.length; i += 1) {
+          classname[i].addEventListener("click", deleteWishlistItem);
+        }
+      }
+    }).catch(console.error);
+  }
 }
 
 exports.deleteWishlistItem = deleteWishlistItem;
@@ -2970,49 +2982,50 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _bling = __webpack_require__(1);
 
 // Reference: https://stackoverflow.com/a/33928558/4619005
-function copyToClipboard(text) {
-    if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-        var textarea = document.createElement("textarea");
 
-        textarea.textContent = text;
-        textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-            return document.execCommand("copy"); // Security exception may be thrown by some browsers.
-        } catch (ex) {
-            console.warn("Copy to clipboard failed.", ex);
-            return false;
-        } finally {
-            document.body.removeChild(textarea);
-        }
-    } else if (window.clipboardData && window.clipboardData.setData) {
-        // IE specific code path to prevent textarea being shown while dialog is visible.
-        return clipboardData.setData("Text", text);
+// eslint-disable-next-line consistent-return
+function copyToClipboard(text) {
+  if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+    var textarea = document.createElement("textarea");
+
+    textarea.textContent = text;
+    textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+    } catch (ex) {
+      return false;
+    } finally {
+      document.body.removeChild(textarea);
     }
+  } else if (window.clipboardData && window.clipboardData.setData) {
+    // IE specific code path to prevent textarea being shown while dialog is visible.
+    return clipboardData.setData("Text", text); // eslint-disable-line no-undef
+  }
 }
 
 function copyUrlEventHandler(event) {
-    var e = event || window.event;
-    var target = e.currentTarget || e.srcElement;
-    var clickedUrl = target.dataset.url;
+  var e = event || window.event;
+  var target = e.currentTarget || e.srcElement;
+  var clickedUrl = target.dataset.url;
 
-    // Animate 'Url copied' on successful copy
-    if (copyToClipboard(clickedUrl)) {
-        if ((0, _bling.$)('#containerCopy').style.opacity == 0) {
-            (0, _bling.$)('#containerCopy').style.opacity = 1;
+  // Animate 'Url copied' on successful copy
+  if (copyToClipboard(clickedUrl)) {
+    if ((0, _bling.$)("#containerCopy").style.opacity === "0") {
+      (0, _bling.$)("#containerCopy").style.opacity = "1";
 
-            setTimeout(function () {
-                (0, _bling.$)('#containerCopy').style.opacity = 0;
-            }, 2000);
-        }
+      setTimeout(function () {
+        (0, _bling.$)("#containerCopy").style.opacity = "0";
+      }, 2000);
     }
+  }
 }
 
 exports.default = copyUrlEventHandler;
@@ -3025,19 +3038,19 @@ exports.default = copyUrlEventHandler;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 function openInNewTab(url) {
-    var win = window.open(url, '_blank');
-    win.focus();
+  var win = window.open(url, "_blank");
+  win.focus();
 }
 
 function unwrap(event) {
-    var e = event || window.event;
-    var target = e.currentTarget || e.srcElement;
-    var url = target.dataset.url;
+  var e = event || window.event;
+  var target = e.currentTarget || e.srcElement;
+  var url = target.dataset.url;
 
-    openInNewTab(url);
+  openInNewTab(url);
 }
 
 exports.default = unwrap;

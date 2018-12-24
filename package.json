@@ -6,7 +6,9 @@
     "start": "node ./bin/www",
     "dev": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
     "watch": "nodemon ./bin/www --ignore public/",
-    "assets": "webpack -w --display-max-modules 0"
+    "assets": "webpack -w --display-max-modules 0",
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "lint": "eslint . -c .eslintrc.json --ext js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -34,8 +36,16 @@
     "babel-loader": "^7.1.5",
     "babel-preset-es2015": "^6.24.1",
     "concurrently": "^4.1.0",
+    "eslint": "^5.11.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "nodemon": "^1.18.7",
+    "prettier": "1.15.3",
     "webpack": "^3.12.0"
   }
 }

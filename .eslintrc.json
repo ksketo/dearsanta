@@ -1,0 +1,20 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": false
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "func-names": ["error", "never"],
+    "prefer-destructuring": ["off"],
+    "no-multi-assign": ["off"]
+  }
+}
