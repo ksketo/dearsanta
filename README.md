@@ -7,6 +7,32 @@
 
 This is a simple side project I created to share wishlists between family and some close friends, so other people may find it useful too.
 
+## Technology
+I used the following technologies
+
+### Back-end
+- Express.js
+
+### Front-end
+- Pug.js
+- HTML
+- CSS
+- Vanilla JS
+- [Chota micro CSS framework](https://jenil.github.io/chota/)
+
+### Linting
+- Prettier for code formating
+- Eslint for linting
+
+### How to Run
+Start services with
+`docker-compose up -d`
+and access the app at port 3000 and the database admin at port 8081.
+You will also need to get API credentials for Twitter and Google auth.
+
+### How to Deploy
+Just install [Now](https://zeit.co/now) and deploy by running `now` in the root dir
+
 ## Contribution
 Feel free to send any kind of pull request
 
