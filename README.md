@@ -10,7 +10,7 @@ This is a simple side project I created to share wishlists between family and so
 ## Contribution
 Feel free to send any kind of pull request
 
-### Features
+### TODO Features
 - [ ] Organize your shopping list for friends' gifts
 - [ ] Add links to the items on your wishlist
 - [ ] People with access to your wishlist can claim a gift
